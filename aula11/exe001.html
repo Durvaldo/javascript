@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nacinalidade</title>
+</head>
+<body>
+    <h1>Verifivcador de nacionalidade</h1>
+    <span>
+        Digite seu país
+        <input type="text" name="pais_txt" id="pais_txt">
+        <input type="button" value="Verificar" onclick="verificar()">
+    </span>
+    <div id="nacionalidade"></div>
+
+    <script>
+        function verificar(){
+            var $pais = window.document.getElementById('pais_txt').value
+            var $verifica_nacionalidade = window.document.querySelector('div#nacionalidade')
+
+            if ( $pais == 'brasil' || $pais == 'Brasil' ) {
+                $verifica_nacionalidade.innerHTML = `<p>Seu país é Brasil e sua nacionalidade é brasileira</p>`
+            } else if ( $pais == '') {
+                $verifica_nacionalidade.innerHTML = `<p>Digite um país</p>`
+            } else {
+                $verifica_nacionalidade.innerHTML = `<p>Seu país é ${$pais} e sua nacionalidade não é Brasileira</p>`
+            }
+        }
+    </script>
+</body>
+</html>
