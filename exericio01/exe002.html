@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de Idade</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Verificador de Idade</h1>
+    </header>
+    <section id="main_content">
+        <label>Ano de Nascimento:</label>
+        <input type="number" name="ano_nascimento" id="ano_nascimento">
+        <br>
+        <label>Sexo:</label>
+        <input type="radio" name="sexo" id="sexo_masculino">
+        <lable for="sexo_masculino">Masculino</lable>
+        <input type="radio" name="sexo" id="sexo_feminino" value="teste">
+        <label for="sexo_feminino">Feminino</label>
+        <br>
+        <input type="button" value="Verificar" onclick="gerar_resultado()">
+        <div class="resultado">
+            <div id="texto_resultado">Resultado</div>
+            <img id="imagem_pessoa">
+        </div>
+    </section>
+    <footer>&copy; DurvaldoMarques</footer>
+
+    
+    
+    <script>
+        let $texto_resultado = window.document.getElementById('texto_resultado')
+
+        function gerar_resultado(){
+            let $ano_nascimento = window.document.getElementById('ano_nascimento').value
+            let $ano_atual = new Date().getFullYear()
+            let $sexo = window.document.getElementsByName('sexo')
+            var $img = window.document.getElementById('imagem_pessoa')
+            let $idade = $ano_atual - $ano_nascimento
+            let $genero = ''
+            
+
+            if ($ano_nascimento <= 1900) {
+                alert('Coloque uma data maior')
+            } else if ($ano_nascimento > $ano_atual) {
+                alert('Coloque um ano menor que o atual')
+            } else {
+                let $img = window.document.createElement('img')
+                $img.setAttribute('id', 'foto')
+                if ($sexo[0].checked) {
+                    $genero = 'Masculino'
+                    if ($idade >= 0 && $idade < 10) {
+                        $img.src = "imagens/homem_criança.jpg"
+                    } else if ($idade < 21) {
+                        $img.src = "imagens/homem_jovem.jpg"
+                    } else if ($idade < 50) {
+                        $img.src = "imagens/homem_adulto.jpg"
+                        console.log($img)
+                    } else {
+                        $img.src = "imagens/homem_velho.jpg"
+                    }
+                } else if ($sexo[1].checked) {
+                    $genero = 'Feminino'
+                    if ($idade >= 0 && $idade < 10) {
+                        $img.src = "imagens/mulher_criança.jpg"
+                    } else if ($idade < 21) {
+                        $img.src = "imagens/mulher_jovem.jpg"
+                    } else if ($idade < 50) {
+                        $img.src = "imagens/mulher_adulto.jpg"
+                    } else {
+                        $img.src = "imagens/mulher_velho.jpg"
+                    }
+                }
+                $texto_resultado.innerText = `A pessoa é do gênero ${$genero} com ${$idade} anos`
+            }
+
+        }
+    </script>
+</body>
+</html>

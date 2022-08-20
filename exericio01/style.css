@@ -1,0 +1,27 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(126, 126, 196);
+    text-align: center;
+}
+#main_content{
+    background-color: rgb(184, 235, 235);
+    width: 70%;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.247);
+    margin: auto;
+    line-height: 2em;
+    text-align: left;
+}
+.resultado{
+    line-height: 3em;
+    text-align: center;
+    font-size: 1.5em;
+}
+#imagem_pessoa{
+    width: 200px;
+    border-radius: 100%;
+}
+footer{
+    padding-top: 20px;
+}

@@ -1,11 +1,22 @@
 var $hora = new Date().getHours()
 var $minutos = new Date().getMinutes()
+var $text
+
+if ($hora < 10){
+    $text = `Agora são 0${$hora}`
+} else if ($hora == 12){
+    $text = `Agora é ${$hora}`
+} else{   
+    $text = `Agora são ${$hora}`
+}
 
 if ( $minutos < 10 ){
-    console.log(`Agora são ${$hora}:0${$minutos} horas`)
+    $text += (`:0${$minutos}`)
 } else{
-    console.log(`Agora são ${$hora}:${$minutos} horas`)
+    $text += (`:${$minutos}`)
 }
+
+console.log($text)
 
 if ( $hora < 12 ) {
     console.log(`Bom dia`)
