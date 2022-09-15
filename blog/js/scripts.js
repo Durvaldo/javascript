@@ -13,6 +13,12 @@ const comentContainer = document.querySelector("#coments-container")
 const urlSearchParams = new URLSearchParams(window.location.search)
 const postId = urlSearchParams.get("id")
 
+// add comentarios
+const commentForm = document.querySelector("#comment-form")
+const emailInput = document.querySelector("#email")
+const bodyInput = document.querySelector("#body")
+
+
 //get all posts
 async function getAllPosts() {
 
@@ -88,8 +94,38 @@ function createComment(comment) {
     comentContainer.appendChild(div)
 }
 
+async function postComment(comment) {
+
+    // POST, PUT, PATCH, DELETE - headers, body
+
+    const response = await fetch(`${url}/${postId}/comments`, {
+        method: "POST",
+        body: comment,
+        headers: {
+            "content-type": "application/json",
+        },
+    })
+
+    const data = await response.json()
+
+    createComment(data)
+}
+
 if(!postId) {
     getAllPosts()
 } else {
     getPost(postId)
+
+    // add evento de comentar pelo formulario
+    commentForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        let comment = {
+            email: emailInput.value,
+            body: bodyInput.value
+        }
+
+        comment = JSON.stringify(comment)
+        postComment(comment)
+
+    })
 }
