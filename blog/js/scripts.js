@@ -1,6 +1,6 @@
 const url = "https://jsonplaceholder.typicode.com/posts"
 
-//ids do index
+//ids do index.html
 const loadingElement = document.querySelector("#loading")
 const postsContainer = document.querySelector("#posts-container")
 
