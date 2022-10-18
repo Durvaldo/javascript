@@ -5,10 +5,13 @@ $(document).ready(function() {
 
         $.ajax({
             method: "GET",
-            url: "http://127.0.0.1:5500/ajax/post.html",
-            data: {nome: nome.value}
-        }).done(function( msg ) {
-            alert( "Data Saved: " + msg );
-            });
+            url: "https://containerseguranca.w3corp.com.br/inc/mod_containerseguranca/ajax_parceiros_list.php",
+            data: {
+                cod_filial: nome.value
+            },
+            headers: {
+                Accept: {application.json, javascript}
+            }
+        })
     });
 });
