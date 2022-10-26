@@ -1,5 +1,14 @@
 const getPokemonUrl = id => `https://pokeapi.co/api/v2/pokemon/${id}`
 
+const clicarCard = () => {
+    const card = document.getElementsByClassName('card') 
+    for (var i = 0; i < card.length; i++) {
+        card[i].addEventListener("click", () => {                                                              
+            console.log(i)
+        });
+    }
+}
+
 const fetchPokemon = () => {
     const pokemonPromises = []
 
@@ -13,7 +22,7 @@ const fetchPokemon = () => {
             const lisPokemons = pokemons.reduce((accumulator, pokemon) => {
                 const types = pokemon.types.map(typeInfo => typeInfo.type.name)
                 accumulator += /*html*/`
-                    <li class="card ${types[0]}">
+                    <li class="card ${types[0]}" id='pokemon_${pokemon.id}'>
                         <img 
                             class="card-image" 
                             alt="${pokemon.name}" src="https://cdn.traction.one/pokedex/pokemon/${pokemon.id}.png"
@@ -28,7 +37,10 @@ const fetchPokemon = () => {
             const ul = document.querySelector('[data-js="pokedex"]')
 
             ul.innerHTML = lisPokemons
+            clicarCard()
         })
 } 
 
 fetchPokemon()
+
+
