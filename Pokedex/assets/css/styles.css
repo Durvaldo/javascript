@@ -16,6 +16,19 @@ h1 {
 	font-size: 54px;
 }
 
+#loading-placeholder {
+	margin-top: 25vh;
+	text-align: center;
+}
+
+#loading-placeholder img {
+	max-width: 320px;
+}
+
+.hide {
+	display: none;
+}
+
 .pokedex {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));

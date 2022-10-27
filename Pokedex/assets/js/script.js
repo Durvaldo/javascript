@@ -35,6 +35,7 @@ const fetchPokemon = () => {
             }, '')
 
             const ul = document.querySelector('[data-js="pokedex"]')
+            document.querySelector('#loading-placeholder').classList.add("hide")
 
             ul.innerHTML = lisPokemons
             clicarCard()
