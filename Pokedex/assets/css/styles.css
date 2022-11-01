@@ -36,16 +36,17 @@ h1 {
 	padding-inline-start: 0;
 }
 
-.card {
+.card-pokemon {
 	list-style: none;
 	padding: 40px;
 	color: #222;
 	text-align: center;
 	border-radius: 20px;
 	position: relative;
+	cursor: pointer;
 }
 
-.card::after {
+.card-pokemon::after {
     content: "";
   display: block;
   width: 50%;
@@ -143,6 +144,14 @@ h1 {
 	height: 180px;
 	position: relative;
 	z-index: 2;
+}
+
+.modal-title {
+	text-transform: capitalize;
+}
+
+.modal-footer {
+	min-height: 4em;
 }
 
 @keyframes bounce {
