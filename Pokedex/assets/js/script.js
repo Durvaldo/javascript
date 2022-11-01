@@ -1,47 +1,33 @@
 const getPokemonUrl = id => `https://pokeapi.co/api/v2/pokemon/${id}`
 
-const clicarCard = () => {
-    const card = document.getElementsByClassName('card') 
-    for (var i = 0; i < card.length; i++) {
-        card[i].addEventListener("click", () => {                                                              
-            console.log(i)
-        });
-    }
+const generatorPokemonPromises = () => Array(151).fill().map((_, index) =>
+    fetch(getPokemonUrl(index + 1)).then(response => response.json()))
+
+const generatorHtml = pokemons => pokemons.reduce((accumulator, { name, id, types}) => {
+    const elementTypes = types.map(typeInfo => typeInfo.type.name)
+
+    accumulator += /*html*/`
+        <li class="card ${elementTypes[0]}" id='pokemon_${id}'>
+            <img 
+                class="card-image" 
+                alt="${name}" src="https://cdn.traction.one/pokedex/pokemon/${id}.png"
+            />
+            <h2 class="card-title">${id} . ${name}</h2>
+            <p class='card-subtitle'>${elementTypes.join(' | ')}</p>
+        </li>
+        `
+    return accumulator
+}, '')
+
+const insertPokemonsIntoPage = pokemons => {
+    const ul = document.querySelector('[data-js="pokedex"]')
+    document.querySelector('#loading-placeholder').classList.add("hide")
+    ul.innerHTML = pokemons
 }
 
-const fetchPokemon = () => {
-    const pokemonPromises = []
-
-    for (let id = 1; id <= 151; id++) {
-        pokemonPromises.push(fetch(getPokemonUrl(id)).then(response => response.json()))
-    }
-    
-    Promise.all(pokemonPromises)
-        .then(pokemons => {
-
-            const lisPokemons = pokemons.reduce((accumulator, pokemon) => {
-                const types = pokemon.types.map(typeInfo => typeInfo.type.name)
-                accumulator += /*html*/`
-                    <li class="card ${types[0]}" id='pokemon_${pokemon.id}'>
-                        <img 
-                            class="card-image" 
-                            alt="${pokemon.name}" src="https://cdn.traction.one/pokedex/pokemon/${pokemon.id}.png"
-                        />
-                        <h2 class="card-title">${pokemon.id} . ${pokemon.name}</h2>
-                        <p class='card-subtitle'>${types.join(' | ')}</p>
-                    </li>
-                    `
-                return accumulator
-            }, '')
-
-            const ul = document.querySelector('[data-js="pokedex"]')
-            document.querySelector('#loading-placeholder').classList.add("hide")
-
-            ul.innerHTML = lisPokemons
-            clicarCard()
-        })
-} 
-
-fetchPokemon()
+const pokemonPromises = generatorPokemonPromises()
+Promise.all(pokemonPromises)
+    .then(generatorHtml)
+    .then(insertPokemonsIntoPage)
 
 
