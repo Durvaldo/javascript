@@ -32,3 +32,7 @@ lista.forEach(function(value) {
 
 console.log( lista );
 
+
+const urlTeste = 'https://naruto-api.herokuapp.com/api/v1/bijus'
+
+fetch(urlTeste)
