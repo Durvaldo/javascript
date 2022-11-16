@@ -33,8 +33,8 @@ Promise.all(pokemonPromises)
 
 
 const pokemonSelecionado = id => {
-    const pokemonModal = fetch(getPokemonUrl(id)).then(response => response.json())
-    Promise.resolve(pokemonModal)
+    fetch(getPokemonUrl(id))
+        .then(response => response.json())
         .then(generatorModal)
 }
 
