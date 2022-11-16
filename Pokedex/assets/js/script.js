@@ -41,6 +41,7 @@ const pokemonSelecionado = id => {
 const generatorModal = pokemon => {
     console.log(pokemon)
     const elementTypes = pokemon.types.map(typeInfo => typeInfo.type.name)
+    elementTypes[1] = elementTypes[1] || elementTypes[0]
 
     const modal = document.querySelector('#corpo-pokemon-modal')
     modal.innerHTML = ""
