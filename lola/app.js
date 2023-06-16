@@ -8,35 +8,27 @@ const criarPessoa = (nome, idade, sexo) => {
         nome,
         idade,
         sexo,
-        login: () => 'O usuario logou',
+        login: () => `O(a) ${nome} logou`,
         logout: () => 'O usuario deslogou',
         incrementCount: () => ++counter
     }
 }
 
+
+
 const usuario1 = criarPessoa('Durvaldo', 26, 'M')
 const usuario2 = criarPessoa('Lola', 15, 'F')
-const usuario3 = criarPessoa('Yuri', 28, 'M')
+console.log(`Bem vindo ao nosso sistema ${usuario2.nome} vi que você tem ${usuario2.idade} anos caso queira fazer logout, clique aqui.`)
 
-console.log(usuario3.login())
-
-
+// console.log(usuario2.login())
 
 
 
 
 
+// const usuario3 = criarPessoa('Yuri', 28, 'M')
 
-
-
-
-
-
-
-
-
-
-
+// console.log(usuario3.login())
 
 
 // let durvaldo = criarPessoa('Durvaldo', 26, 'M')

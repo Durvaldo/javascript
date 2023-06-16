@@ -1,7 +1,7 @@
 const getPokemonUrl = id => `https://pokeapi.co/api/v2/pokemon/${id}`
 const getPokemonFrontSprite = id => `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`
 
-const generatorPokemonPromises = () => Array(151).fill().map((_, index) =>
+const generatorPokemonPromises = () => Array(1010).fill().map((_, index) =>
     fetch(getPokemonUrl(index + 1)).then(response => response.json()))
 
 const generatorHtml = pokemons => pokemons.reduce((accumulator, { name, id, types}) => {
@@ -11,7 +11,7 @@ const generatorHtml = pokemons => pokemons.reduce((accumulator, { name, id, type
         <li class="card-pokemon ${elementTypes[0]}" onclick="pokemonSelecionado(${id})">
             <img 
                 class="card-image" 
-                alt="${name}" src="https://cdn.traction.one/pokedex/pokemon/${id}.png"
+                alt="${name}" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png"
             />
             <h2 class="card-title">${id} . ${name}</h2>
             <p class='card-subtitle'>${elementTypes.join(' | ')}</p>

@@ -1,0 +1,36 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+
+html, body{
+    height: 100%;
+}
+
+body{
+    display: flex;
+    flex-direction: column;   
+}
+
+header{
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #333d66;
+    flex-shrink: 0;
+}
+
+main{
+    padding: 10px;
+    flex: 1 0 auto;
+}
+
+footer{
+    width: 100%;
+    background-color: #333d66;
+    height: 120px;
+    flex-shrink: 0;
+}

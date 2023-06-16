@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video</title>
+    <link rel="shortcut icon" href="../imagens/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/style2.css">
+</head>
+<body>
+         <header>
+            <a href="../../index.html"><img src="../imagens/logo.png" alt="home-button"></a>
+        </header>
+        <main>
+        <h1>Inserindo videos hospedados localmente</h1>
+        <p>Esse video está no meu computador</p>
+        <!-- Maneira que gasta muita banda e pouco utilizado -->
+        <video width="500" poster="../imagens/limoes-capa.png" controls >
+            <source src="../midias/meu-video.mp4" type="video/mp4">
+            <source src="../midias/meu-video.m4v" type="video/mp4">
+            <source src="../midias/meu-video.webm" type="video/webm">
+            <source src="../midias/meu-video.ogv" type="video/ogg">
+            <p>Seu navegador não tem compatibilidade com reprodução de videos</p>
+        </video>
+        <h1>Inserindo videos do youtube</h1>
+        <iframe width="500" height="281" src="https://www.youtube.com/embed/3hng-hmSv2Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="500" height="281" src="https://www.youtube.com/embed/R8of-SVzxJU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </main>
+    <footer></footer>
+</body>
+</html>
