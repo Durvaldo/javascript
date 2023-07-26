@@ -1,7 +1,7 @@
 const getPokemonUrl = id => `https://pokeapi.co/api/v2/pokemon/${id}`
 const getPokemonFrontSprite = id => `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`
 
-const generatorPokemonPromises = () => Array(1010).fill().map((_, index) =>
+const generatorPokemonPromises = () => Array(151).fill().map((_, index) =>
     fetch(getPokemonUrl(index + 1)).then(response => response.json()))
 
 const generatorHtml = pokemons => pokemons.reduce((accumulator, { name, id, types}) => {
